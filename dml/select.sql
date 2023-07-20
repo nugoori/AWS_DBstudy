@@ -28,7 +28,23 @@ from
 group by # 
 	student_age
 having
-	total_score = 40;
+	total_score = 20;
+  
+select # select 실행 순서 이해하기 ( from > where > group by > select > having > order by )
+	count(*)
+from 
+	student_tb
+where
+	student_age = 20;
+
+select
+	*
+from
+	student_tb
+order by
+	student_score desc,
+    student_id desc;
+
   
 insert into student_tb 
 values
