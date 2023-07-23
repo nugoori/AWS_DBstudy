@@ -8,8 +8,8 @@ from
 	user_tb ut
 	left outer join address_tb at on(at.user_id = ut.user_id)
 where
-	name = '상구';
-    
+	-- name = '상구';
+    ut.name = '상구'; # 좀 더 정확하게 테이블명을 지정 해주는게 좋음
     
  # 상품별 총 판매 수량, 판매 총액
  # 상품이름으로하면 이름마다 다 나와서 보기 힘듦 / ifnull 한번 넣어봤음
@@ -24,7 +24,7 @@ from
     left outer join order_detail_tb odt on(odt.product_id = pt.product_id)
     left outer join order_tb ot on(ot.order_id = odt.order_id)
 group by
-	-- pt.product_name;
+	-- pt.product_name; 
     odt.product_id;
 
  select
@@ -51,7 +51,7 @@ group by
     
  
  # address_tb sido 컬럼을 참조하여 지역별로 판매된 상품의 총액을 조회
- # ifnull 사용 미숙 / user_tb 까진 필요 없었음
+ # ifnull 사용 미숙 / user_tb 까진 필요 없었음 / adress_tb에는 없지만 order_tb에는 29번주소가 존재함 > 조인 순서를 잘 설정해야 함
  select
 	at.address_sido,
     -- sum(odt.count_number * pt.product_price) as regional_product_price
@@ -67,14 +67,14 @@ group by
     
  
  # 상품명이 '나이키'가 포함된 제품이 몇개가 판매되었고 판매 총액은 얼마인지
- # 제품 갯수가 아니라 제품 판매 갯수!! / '나이키' 상품명으로 검색 / 
+ # 제품 갯수가 아니라 제품 판매 갯수!! / '나이키' 상품명으로 검색 / product_tb를 먼저 가져오게 되면 판매되지 않은 상품들도 다 나오게 됨( 이런걸 생각 못하니? ) / order_tb까지는 필요 없었음
  select
     -- count(pt.product_name) as contains_nikey,
     sum(odt.count_number * pt.product_price) as total_product_price
 from
 	product_tb pt
     left outer join order_detail_tb odt on(odt.product_id = pt.product_id)
-    left outer join order_tb ot on(ot.order_id = odt.order_id)
+    -- left outer join order_tb ot on(ot.order_id = odt.order_id)
 where
  	pt.product_name like '%나이키%';
 
