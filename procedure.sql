@@ -13,6 +13,6 @@ call get_product_by_category('');
 call get_product_by_category_case('');
 
 show global variables like 'log_bin_trust_function_creators';
-set global log_bin_trust_function_creators = 1;
 
+set global log_bin_trust_function_creators = 1;
 select create_name_and_age('김준일', 29);
