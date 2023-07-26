@@ -1,7 +1,7 @@
 # procedure (저장 프로시저)
 
-call save_user('ddd@naver.com', '1212', '김준이', 'google', null);
-call save_user_many('aaa', '1234', '김준삼', null, null, 5);
+# call save_uproduct_viewproduct_viewserproduct_view('ddd@naver.com', '1212', '김준이', 'google', null);
+# call save_user_many('aaa', '1234', '김준삼', null, null, 5);
 
 set @color = 'black';
 set @color_name = 'blue';

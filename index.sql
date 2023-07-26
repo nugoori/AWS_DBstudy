@@ -11,8 +11,9 @@ values
 create view product_view as
 select * from product_tb;
 
-create index product_code_index on product_tb(product_code);
+create index product_code_index2 on product_tb(product_code);
 show index from user_tb;
+show index from product_tb;
 
 show full tables in study3 where table_type = 'VIEW';
 show full tables in study3;

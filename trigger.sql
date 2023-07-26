@@ -28,3 +28,5 @@ from
 	user_tb
 where
 	name = 'ㄱㅈ일';
+
+# 이런식으로 작성하던걸 trigger를 통해 간편하게 가능
